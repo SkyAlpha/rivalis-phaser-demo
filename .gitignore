@@ -1,0 +1,13 @@
+node_modules
+
+secrets/*
+!secrets/README.md
+
+rivalis/*
+!rivalis/README.md
+
+public/*
+!public/assets
+!public/README.md
+
+.parcel-cache
