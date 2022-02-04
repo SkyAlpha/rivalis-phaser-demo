@@ -38,7 +38,7 @@ class Loader extends Scene {
 
         this.lights.enable()
         this.lights.setAmbientColor(0x808080)
-        this.spotLight = this.lights.addLight(140, 370, 280).setIntensity(2)
+        this.spotLight = this.lights.addLight(140, 370, 280).setIntensity(3)
         this.spotLightTween = this.add.tween({
             targets: this.spotLight,
             x: { value: 1100, duration: 4000, ease: 'Power2', delay: 500 },
@@ -81,6 +81,9 @@ class Loader extends Scene {
         this.add.tween({
             targets: this.spotLight,
             radius: 1000,
+            x: 140,
+            y: 370,
+            intensity: 2,
             duration: 1500
         }).on('complete', () => {
             this.bg.destroy()

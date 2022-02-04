@@ -1,6 +1,7 @@
 import { createInstance } from '@rivalis/boot'
-import GameRoom from './rooms/GameRoom'
+import ForestRoom from './rooms/ForestRoom'
 
 createInstance(instance => {
-    instance.rooms.define('game', GameRoom)
+    instance.rooms.define('forest', ForestRoom)
+    instance.rooms.create('test', 'forest')
 })

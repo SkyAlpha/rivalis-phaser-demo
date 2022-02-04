@@ -1,5 +1,6 @@
 
 import { Game, Scale, WEBGL } from 'phaser'
+import Forest from './scenes/Forest'
 import Loader from './scenes/Loader'
 import Lobby from './scenes/Lobby'
 
@@ -27,5 +28,6 @@ const game = new Game({
 
 game.scene.add('loader', new Loader())
 game.scene.add('lobby', new Lobby())
+game.scene.add('forest', new Forest())
 
-game.scene.start('loader')
+game.scene.start('forest')

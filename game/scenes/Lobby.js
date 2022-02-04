@@ -1,12 +1,10 @@
 import { Logger } from '@rivalis/utils'
-import axios from 'axios'
+import { AppClient } from '@rivalis/browser'
 import { GameObjects, Scene } from 'phaser'
 
 class Lobby extends Scene {
 
-    http = axios.create({ baseURL: 'http://localhost:2334' })
-
-    appId = '87d19cb25f0c'
+    app = new AppClient('http://localhost:2334', '80013b831326')
 
     logger = Logger.getLogger('scene=lobby')
 
@@ -17,33 +15,14 @@ class Lobby extends Scene {
     buttonText = null
 
     create() {
-        this.drawScene()
-    }
-
-    createGame() {
+        let url = new URL(window.location.href)
+        let roomId = url.searchParams.get('roomId') || null
         
-    }
+        if (roomId !== null) {
+            this.joinRoom(roomId)
+            return
+        }
 
-    createRoom() {
-        this.buttonText.input.enabled = false
-        this.buttonText.setAlpha(.5)
-        return this.http.post(`/api/apps/${this.appId}/rooms`, { fleet: 'my PC', roomType: 'game' }).catch(() => {
-            this.logger.error('create room fail', error)
-        }).then((response) => {
-            console.log(response.data.data)
-        })
-    }
-
-    joinRoom(roomId) {
-        return this.http.post(`/api/apps/${this.appId}/rooms/join`, { fleet: 'my PC', roomType: 'game' }).catch(() => {
-            this.logger.error('create room fail', error)
-        }).then((response) => {
-            console.log(response.data.data)
-        })
-    }
-
-
-    drawScene() {
         this.bg = this.add.image(0, 0, 'background').setOrigin(0).setPipeline('Light2D')
         this.lights.enable()
         this.lights.setAmbientColor(0x808080)
@@ -65,6 +44,24 @@ class Lobby extends Scene {
             this.buttonText.setInteractive({ cursor: 'pointer' })
         })
     }
+
+    async createRoom() {
+        let access = await this.app.createRoom('my PC', 'forest')
+
+        // change url and move to the next scene
+        let url = new URL(window.location.href)
+        url.searchParams.append('roomId', access.roomId)
+        window.history.replaceState({}, null, url.toString())
+        this.scene.start('forest', access)
+    }
+
+    async joinRoom(roomId) {
+        let access = await this.app.joinRoom('my PC', roomId)
+        this.scene.start('forest', access)
+    }
+
+
+    
 }
 
 export default Lobby

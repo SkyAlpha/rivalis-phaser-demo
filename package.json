@@ -10,10 +10,10 @@
 	},
 	"dependencies": {
 		"@rivalis/boot": "^1.0.5",
+		"@rivalis/browser": "^1.2.7",
 		"@rivalis/core": "^4.11.10",
 		"@rivalis/registry": "^2.5.26",
 		"@rivalis/transports": "^1.1.7",
-		"axios": "^0.25.0",
 		"phaser": "^3.55.2"
 	},
 	"devDependencies": {
