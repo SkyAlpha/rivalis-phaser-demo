@@ -4,7 +4,8 @@ import { GameObjects, Scene } from 'phaser'
 
 class Lobby extends Scene {
 
-    app = new AppClient('http://localhost:2334', '80013b831326')
+    /** @type {AppClient} */
+    app = null
 
     logger = Logger.getLogger('scene=lobby')
 
@@ -15,6 +16,10 @@ class Lobby extends Scene {
     buttonText = null
 
     create() {
+        const { CONSOLE_URL, APP_ID } = this.cache.json.get('config')
+
+        this.app = new AppClient(CONSOLE_URL, APP_ID)
+
         let url = new URL(window.location.href)
         let roomId = url.searchParams.get('roomId') || null
         
