@@ -12,7 +12,7 @@ const game = new Game({
         default: 'arcade',
         arcade: {
             debug: false,
-            gravity: { y: 0 }
+            gravity: { y: 10 }
         }
     },
     dom: {
@@ -30,4 +30,4 @@ game.scene.add('loader', new Loader())
 game.scene.add('lobby', new Lobby())
 game.scene.add('forest', new Forest())
 
-game.scene.start('forest')
+game.scene.start('loader')

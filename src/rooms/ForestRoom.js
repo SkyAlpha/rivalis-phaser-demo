@@ -1,12 +1,12 @@
 import { Room } from '@rivalis/core'
-import ForestMap from '../routers/ForestMap'
+import MapRouter from '../routers/MapRouter'
 
 class ForestRoom extends Room {
 
     forest = null
 
     onCreate() {
-        this.use('forest', ForestMap)
+        this.use('map', MapRouter)
     }
 
 }

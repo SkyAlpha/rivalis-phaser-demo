@@ -34,6 +34,12 @@ class ForestGenerator {
      */
     fieldMap = new Map()
 
+    /**
+     * 
+     * @param {number} sizeX 
+     * @param {number} sizeY 
+     * @returns 
+     */
     generate(sizeX, sizeY) {
         this.prepareFields(sizeX, sizeY)
         let startingField = this.getRandomField()
@@ -57,10 +63,49 @@ class ForestGenerator {
             this.markPath(currentField, nextField)
             stack.push(nextField)
         }
-        
-        console.log(JSON.stringify(this.fields))
+        let fields = this.toBoolArray(sizeX, sizeY)
+        let width = sizeX * 2 + 1
+        return { fields, width }
+    }
 
-        return this.fields
+    /**
+     * @private
+     * @param {number} sizeX 
+     * @param {number} sizeY 
+     */
+    toBoolArray(sizeX, sizeY) {
+        
+        let boolArray = []
+
+        for (let y = -.5; y <= sizeY; y+= .5) {
+            let fieldY = Math.floor(y)
+            
+            for (let x = -.5; x < sizeX; x += .5) {
+                let fieldX = Math.floor(x)
+                let field = this.getField(fieldX, fieldY)
+
+                if (field === null) {
+                    boolArray.push(false)
+                    continue
+                }
+
+                if (fieldX === x && fieldY === y && field !== null) {
+                    boolArray.push(true)
+                    continue
+                }
+                if (fieldX !== x && fieldY === y && field !== null) {
+                    boolArray.push(!field.walls.right)
+                    continue
+                }
+
+                if (fieldX === x && fieldY !== y && field !== null) {
+                    boolArray.push(!field.walls.bottom)
+                    continue
+                }
+                boolArray.push(false)
+            }   
+        }
+        return boolArray
     }
 
     /**

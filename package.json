@@ -11,8 +11,8 @@
 	"dependencies": {
 		"@rivalis/boot": "^1.0.5",
 		"@rivalis/browser": "^1.2.7",
-		"@rivalis/core": "^4.11.10",
-		"@rivalis/registry": "^2.5.26",
+		"@rivalis/core": "^4.11.16",
+		"@rivalis/registry": "^2.5.28",
 		"@rivalis/transports": "^1.1.7",
 		"phaser": "^3.55.2"
 	},
@@ -21,8 +21,7 @@
 		"@babel/node": "^7.16.8",
 		"@babel/plugin-proposal-class-properties": "^7.16.7",
 		"@babel/preset-env": "^7.16.11",
-		"@rivalis/cli": "^1.4.46",
-		"@rivalis/console": "^1.3.2",
+		"@rivalis/console": "^1.3.3",
 		"nodemon": "^2.0.15",
 		"parcel": "^2.2.1"
 	}

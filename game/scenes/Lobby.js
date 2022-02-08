@@ -23,7 +23,7 @@ class Lobby extends Scene {
             return
         }
 
-        this.bg = this.add.image(0, 0, 'background').setOrigin(0).setPipeline('Light2D')
+        this.bg = this.add.image(0, 0, 'background').setOrigin(0)
         this.lights.enable()
         this.lights.setAmbientColor(0x808080)
         this.spotLight = this.lights.addLight(140, 370, 1000).setIntensity(2)
@@ -48,7 +48,6 @@ class Lobby extends Scene {
     async createRoom() {
         let access = await this.app.createRoom('my PC', 'forest')
 
-        // change url and move to the next scene
         let url = new URL(window.location.href)
         url.searchParams.append('roomId', access.roomId)
         window.history.replaceState({}, null, url.toString())
