@@ -1,1 +1,0 @@
-# Rivalis local data

@@ -9,20 +9,21 @@
 		"build": "rivalis project build"
 	},
 	"dependencies": {
-		"@rivalis/boot": "^1.0.5",
-		"@rivalis/core": "^4.11.16",
-		"@rivalis/registry": "^2.5.28",
+		"@rivalis/boot": "^1.0.6",
+		"@rivalis/core": "^4.11.18",
+		"@rivalis/registry": "^2.5.30",
 		"@rivalis/transports": "^1.1.7"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.16.12",
+		"@babel/cli": "^7.17.0",
+		"@babel/core": "^7.17.2",
 		"@babel/node": "^7.16.8",
 		"@babel/plugin-proposal-class-properties": "^7.16.7",
 		"@babel/preset-env": "^7.16.11",
-		"@rivalis/console": "^1.3.3",
+		"@rivalis/browser": "^1.2.9",
+		"@rivalis/console": "^1.3.4",
 		"nodemon": "^2.0.15",
 		"parcel": "^2.2.1",
-		"phaser": "^3.55.2",
-		"@rivalis/browser": "^1.2.7"
+		"phaser": "^3.55.2"
 	}
 }

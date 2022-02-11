@@ -28,7 +28,7 @@ class Lobby extends Scene {
             return
         }
 
-        this.bg = this.add.image(0, 0, 'background').setOrigin(0)
+        this.bg = this.add.image(0, 0, 'background').setOrigin(0).setPipeline('Light2D')
         this.lights.enable()
         this.lights.setAmbientColor(0x808080)
         this.spotLight = this.lights.addLight(140, 370, 1000).setIntensity(2)
