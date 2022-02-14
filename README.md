@@ -6,6 +6,8 @@ Phaser multiplayer game example, learn how to use Rivalis with Phaser
 npm install
 npm start
 ```
-
-1. Open `http://localhost:2334` type: **admin** as a password. Go to the third menu to list the applications.
-2. Copy appId and change the APP_ID value inside `public/assets/config.json` to be able to run the game properly.
+## Post-install
+1. Open `http://localhost:2334`
+2. type: **admin** as a password.
+3. Go to the third menu to list the applications.
+4. Copy appId and change the APP_ID value inside `public/assets/config.json` to be able to run the game properly.
